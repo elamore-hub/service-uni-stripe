@@ -1,0 +1,40 @@
+enum StatusType {
+	NONE,
+    ON_GOING,
+    FAILED,
+    DONE
+}
+
+entity EventUses {
+	cusotmerId String,
+    customerName String,
+    subscriptionId String,
+    subscriptionName String,
+    productId String,
+    productName String,
+    month Integer,
+    year Integer,
+    status StatusType,
+    error String,
+    total Long
+}
+
+entity Product {
+	productName String,
+    productId String,
+    calculator String,
+}
+
+
+// Set pagination options
+paginate EventUse with pagination
+paginate Product with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
