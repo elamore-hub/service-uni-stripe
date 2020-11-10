@@ -25,16 +25,28 @@ entity Product {
     calculator String,
 }
 
+/**
+ * This class reprensents a link between a billing customer
+ * and one of the customer's organization
+ * @author Someone
+ */
+entity CustomerOrganizationLink
+{
+    organisationId String, /** the organisation identifier */
+	organisationName String, /** the organisation name */
+	organisationRegisterDate LocalDate, /** the organisation register date */
+	customerId String, /** the customer identifier */
+    customerName String /** the customer name */
+}
 
 // Set pagination options
-paginate EventUses with pagination
-paginate Product with pagination
+paginate EventUse, CustomerOrganizationLink, Product with pagination
 
 // Use Data Transfert Objects (DTO)
 // dto * with mapstruct
 
 // Set service options to all except few
-service all with serviceImpl
+service all with serviceImpl except CustomerOrganizationLink
 
 // Set an angular suffix
 // angularSuffix * with mySuffix
