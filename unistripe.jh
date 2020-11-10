@@ -25,16 +25,39 @@ entity Product {
     calculator String,
 }
 
+entity CustomerOrganisationLink
+{
+    organisationId String,
+	organisationName String,
+	organisationRegisterDate Date,
+	customerId String,
+    customerName String
+}
+
+entity BillingCustomer {
+	taxNo String,
+	thirdPartyAccountingCode String,
+	siret String,
+	ownerId String,
+	isParticular Boolean,
+	partner Boolean,
+	partnerId String,
+	customerId String,
+	customerName String,
+}
+
+
+
 
 // Set pagination options
-paginate EventUses with pagination
+paginate EventUse with pagination
 paginate Product with pagination
 
 // Use Data Transfert Objects (DTO)
 // dto * with mapstruct
 
 // Set service options to all except few
-service all with serviceImpl
+service all with serviceImpl except EventUse, Product, BillingCustomer, CustomerOrganisationLink
 
 // Set an angular suffix
 // angularSuffix * with mySuffix
