@@ -25,16 +25,49 @@ entity Product {
     calculator String,
 }
 
+/**
+ * This class reprensents a link between a billing customer
+ * and one of the customer's organization
+ * @author Someone
+ */
+entity CustomerOrganizationLink
+{
+    organisationId String, /** the organisation identifier */
+	organisationName String, /** the organisation name */
+	organisationRegisterDate LocalDate, /** the organisation register date */
+	customerId String, /** the customer identifier */
+    customerName String /** the customer name */
+}
+
+/**
+ * This class reprensents a light
+ * billing customer
+ * @author Someone
+ */
+entity BillingCustomer {
+	taxNo String, /** the tax number of customer */
+	thirdPartyAccountingCode String, /** the third party accounting code of the customer */
+	siret String, /** the siret of the customer */
+	ownerId String, /** the owner identifier of the customer */
+	isParticular Boolean, /** true if the customer is a particular, false otherwise */
+	partner Boolean, /** ture if the customer is a partner, false otherwise */
+	partnerId String, /** the partner identifier */
+	customerId String, /** the customer identifier */
+	customerName String /** the name of the customer */
+}
+
+
+
 
 // Set pagination options
-paginate EventUses with pagination
+paginate EventUse with pagination
 paginate Product with pagination
 
 // Use Data Transfert Objects (DTO)
 // dto * with mapstruct
 
 // Set service options to all except few
-service all with serviceImpl
+service all with serviceImpl except EventUse, Product, BillingCustomer, CustomerOrganizationLink
 
 // Set an angular suffix
 // angularSuffix * with mySuffix
